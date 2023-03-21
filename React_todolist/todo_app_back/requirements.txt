@@ -1,0 +1,6 @@
+fastapi
+httptools
+pydantic
+SQLAlchemy
+uvicorn
+psycopg2

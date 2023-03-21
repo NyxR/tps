@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  todo_app_back:
+    container_name: "todo_app_back"
+    env_file:
+      - .env
+    build:
+      context: ./
+      dockerfile: ./todo_app_back/Dockerfile
+    image: todo_app_back
+    working_dir: /app
+    volumes: 
+      - ./todo_app_back:/app
+    ports:
+      - '5006:8000'
+    command: python main.py
+  
+  todo_app_db:
+    container_name: "todo_app_db"
+    image: postgres
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - ./todo_app_back/postgres-data:/var/lib/postgresql/data
+    ports:
+      - '5434:5432'
