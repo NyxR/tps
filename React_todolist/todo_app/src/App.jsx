@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import TodoList from './components/TodoList'
+import TodoList from './components/todo_list/TodoList'
 import SearchContextProvider from './contexts/SearchContext'
 
 function App() {

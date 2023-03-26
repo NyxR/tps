@@ -1,7 +1,8 @@
+import "./TodoItems.css"
 import React, {useState, useEffect, useRef, useCallback} from 'react'
-import Modal from './modal/Modal'
-import { updateTodo, deleteTodo } from '../api/requests/todos'
-
+import Modal from '../modal/Modal'
+import { updateTodo, deleteTodo } from '../../api/requests/todos'
+import {FiTrash2, BiEdit} from 'react-icons/all'
 
 // Todo item component
 
@@ -77,36 +78,47 @@ export default function TodoItems({item}) {
         return (
             <>
             {/* Update Modal */}
-            <Modal isOpen={openUpdateModal} onClose={() => setOpenUpdateModal(false)}>
-                <input ref={inputTitleRef} type="text" name='todo-title' defaultValue={title}/>
-                <textarea ref={inputContentRef} name="todo-content" cols="30" rows="10" defaultValue={content}></textarea>
-                <button onClick={handleUpdateTodo}>Update</button>
+            <Modal header="Update Todo" isOpen={openUpdateModal} onClose={() => setOpenUpdateModal(false)}>
+                <div className="modal-input-group">
+                    <input ref={inputTitleRef} type="text" name='todo-title' defaultValue={title}/>
+                </div>
+                <div className="modal-input-group">
+                    <textarea ref={inputContentRef} name="todo-content" cols="30" rows="10" defaultValue={content}></textarea>
+                </div>
+                <div className="modal-action-group">
+                    <button className="confirm-btn" onClick={handleUpdateTodo}>Update</button>
+                </div>
             </Modal>
 
             {/* Confirm deletion Modal */}
-            <Modal isOpen={openDeleteModal} onClose={() => setOpenDeleteModal(false)}>
-                <div>
-                    Confirm to Delete the following todo:
-                    ID: {todo_id}, <br/>
-                    Title: {title}
-                    Description: {content}
+            <Modal header="Confirm Deletion" isOpen={openDeleteModal} onClose={() => setOpenDeleteModal(false)}>
+                <div className="modal-message-group">
+                    <h2 className="modal-message-title">Confirm to Delete the following todo:</h2>
+                    <span>ID:</span> {todo_id} <br/>
+                    <span>Title:</span> "{title}"<br/>
+                    <span>Description:</span><br/>
+                    "{content}"
                 </div>
-                <button onClick={handleDeleteTodo}>Confirm</button>
+                <div className="modal-action-group">
+                    <button className="delete-btn" onClick={handleDeleteTodo}>Confirm</button>
+                </div>
             </Modal>
 
             {/* ToDo item content */}
             <div className='todo-item-wrapper'>
                 <div className="todo-item">
-                    <input type="checkbox" name="todo-check" checked={completed} onChange={handleCompleted}/>
-                    <div className='todo-title'>
-                        {title}
-                    </div>
-                    <div className='todo-content'>
-                        {content}
+                    <div className='todo-details'>
+                        <div className="todo-checking">
+                            <input type="checkbox" name="todo-check" checked={completed} onChange={handleCompleted}/>
+                        </div>
+                        <div className='todo-content'>
+                            <h3 className="todo-title">{title}</h3>
+                            <p className="todo-description">{content}</p>
+                        </div>
                     </div>
                     <div className="todo-actions">
-                        <button className='todo-delete' onClick={() => (completed && setOpenDeleteModal(!openDeleteModal))}>Delete</button>
-                        <button className='todo-update' onClick={()=> setOpenUpdateModal(!openUpdateModal)}>Update</button>
+                        <button className='todo-delete' disabled={!completed} onClick={() => (completed && setOpenDeleteModal(!openDeleteModal))}><FiTrash2></FiTrash2></button>
+                        <button className='todo-update' onClick={()=> setOpenUpdateModal(!openUpdateModal)}><BiEdit></BiEdit></button>
                     </div>
                 </div>
             </div>

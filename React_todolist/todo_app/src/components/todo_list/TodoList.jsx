@@ -1,9 +1,11 @@
+import "./TodoList.css"
 import React, {useState, useEffect, useRef, useCallback, useMemo} from 'react'
-import TodoItems from './TodoItems'
-import Modal from './modal/Modal'
-import SearchBar from './search_bar/SearchBar'
-import { useSearchContext } from '../contexts/SearchContext'
-import { getTodos, createTodo} from '../api/requests/todos'
+import TodoItems from '../todo_items/TodoItems'
+import Modal from '../modal/Modal'
+import SearchBar from '../search_bar/SearchBar'
+import { useSearchContext } from '../../contexts/SearchContext'
+import { getTodos, createTodo} from '../../api/requests/todos'
+
 
 
 // Filter todo item by a set query
@@ -69,29 +71,40 @@ export default function TodoList() {
 
 
   return (
-    <div>
+    <div className='todo-list-container'>
         {/* Add Todo Modal */}
-        <Modal isOpen={openAddModal} onClose={() => setOpenAddModal(false)}>
-            <input ref={titleInputRef} type="text" name='new_todo_title'/>
-            <textarea ref={contentInputRef} name="todo-content" cols="30" rows="10"></textarea>
-            <button onClick={addTodo}>Confirm</button>
+        <Modal header="Add New Todo" isOpen={openAddModal} onClose={() => setOpenAddModal(false)}>
+            <div className="modal-input-group">
+                <input ref={titleInputRef} type="text" name='new_todo_title' placeholder="Todo title"/>
+            </div>
+            <div className="modal-input-group">
+                <textarea ref={contentInputRef} name="todo-content" cols="30" rows="10" placeholder="Todo description"></textarea>
+            </div>
+            <div className="modal-action-group">
+                <button className="confirm-btn" onClick={addTodo}>Confirm</button>
+            </div>
         </Modal>
 
         {/* Todo List Content */}
-        <div className='heading'>
-            <h2>TodoList</h2>
-            <button onClick={() => setOpenAddModal(!openAddModal)}>Show Modal</button>
-        </div>
-        <div className='main'>
-            <div className="action">
-                <button className='add_todo' onClick={() => setOpenAddModal(!openAddModal)}>Add Todo</button>
-                <SearchBar />
-            </div>
-            <div className="todo-list">
-                {/* if loading then show the loading spinner else show all todo items */}
-                {loading ? <p>Loading ............</p> : searched_items && searched_items.map((item) => {
-                    return <TodoItems key={item.id} item={item}/>
-                })}
+        <div className="todo-list-wrapper">
+            <div className="todo-list-content">
+                <div className="todo-list-inner">
+                    <div className='heading'>
+                        <h2>Todo List App</h2>
+                    </div>
+                    <div className='main'>
+                        <div className="action">
+                            <button className='add_todo' onClick={() => setOpenAddModal(!openAddModal)}>New Todo</button>
+                            <SearchBar />
+                        </div>
+                        <div className="todo-list">
+                            {/* if loading then show the loading spinner else show all todo items */}
+                            {loading ? <p>Loading ............</p> : searched_items && searched_items.map((item) => {
+                                return <TodoItems key={item.id} item={item}/>
+                            })}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

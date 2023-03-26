@@ -1,0 +1,87 @@
+.todo-item-wrapper {
+    width: 98%;
+    padding: 10px 15px;
+    background-color: hsla(221, 41%, 19%, 0.521);
+    box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.66);
+    border: none;
+    border-radius: 5px;
+}
+.todo-item-wrapper .todo-item{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.todo-item-wrapper .todo-item .todo-actions {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.todo-item-wrapper .todo-item .todo-actions button {
+    margin-left: 10px;
+    font-size: 1.3rem;
+    width: 35px;
+    padding-top: 5px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    transition: .3s;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.66);
+}
+
+.todo-item-wrapper .todo-item .todo-actions .todo-delete {
+    background: hsla(0, 100%, 62%, 0.815);
+}
+
+.todo-item-wrapper .todo-item .todo-actions .todo-delete:disabled {
+    background: hsla(0, 100%, 62%, 0.356);
+    cursor: unset;
+}
+
+.todo-item-wrapper .todo-item .todo-actions .todo-delete:hover:not([disabled]) {
+    background: hsl(0, 100%, 62%);
+}
+
+.todo-item-wrapper .todo-item .todo-actions .todo-update {
+    background: hsla(36, 100%, 62%, 0.808);
+}
+
+.todo-item-wrapper .todo-item .todo-actions .todo-update:hover {
+    background: hsla(36, 100%, 62%, 0.959);
+}
+
+.todo-item-wrapper .todo-item .todo-details {
+    display: flex;
+    gap: 20px;
+    width: 70%;
+    font-family: sans-serif;
+    text-shadow: 0 0 6px black;
+}
+
+.todo-item-wrapper .todo-item .todo-details h3 {
+    font-size: 1.1rem;
+}
+
+.todo-item-wrapper .todo-item .todo-details .todo-content .todo-description {
+    font-size: .9rem;
+    color: hsla(0, 100%, 99%, 0.521);
+    font-style: italic;
+}
+
+.todo-item-wrapper .todo-item .todo-details .todo-checking {
+    width: 20px;
+    align-self: center;
+}
+
+.todo-item-wrapper .todo-item .todo-details .todo-checking input {
+    width: 20px;
+    height: 20px;
+}
+
+
+
+
+

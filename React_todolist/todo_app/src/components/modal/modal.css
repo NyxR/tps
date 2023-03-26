@@ -6,13 +6,146 @@
 
 .modal-overlay {
     position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     top: 0;
     left: 0;
     overflow: hidden;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.452);
     width: 100%;
     height: 100%;
     z-index: 1;
 }
 
-  
+.modal-wrapper {
+  background: hsl(209, 17%, 54%);
+  min-width: 30%;
+  max-height: 50%;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 0px 75px 1px rgb(0, 0, 0);
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+.modal-wrapper .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: hsla(221, 53%, 17%, 0.979);
+  color: #fff;
+}
+
+.modal-wrapper .modal-header h2 {
+  font-size: 1.2rem;
+  text-shadow: 0 0 6px black;
+}
+
+
+.modal-wrapper .modal-header .modal-close {
+  font-size: 1.5rem;
+  width: 40px;
+  transform: translateX(30px);
+  cursor: pointer;
+}
+
+.modal-wrapper .modal-content {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 20px;
+  margin: 0 auto;
+  width: 80%;
+  gap: 10px;
+}
+
+.modal-wrapper .modal-content .modal-input-group {
+  width: 100%;
+}
+
+.modal-wrapper .modal-content .modal-input-group input {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid hsla(221, 53%, 17%, 0.979);
+  outline: none;
+  background: hsl(210, 3%, 88%);
+  padding: 0px 10px;
+  font-size: .9rem;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+}
+
+.modal-wrapper .modal-content .modal-input-group textarea {
+  width: 100%;
+  height: 150px;
+  resize: none;
+  border-radius: 5px;
+  border: 1px solid hsla(221, 53%, 17%, 0.979);
+  outline: none;
+  background: hsl(210, 3%, 88%);
+  padding: 10px 10px;
+  font-size: .9rem;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+}
+
+.modal-wrapper .modal-content .modal-input-group input::placeholder, 
+.modal-wrapper .modal-content .modal-input-group textarea::placeholder {
+  font-style: italic;
+}
+
+.modal-wrapper .modal-content .modal-input-group input:focus, 
+.modal-wrapper .modal-content .modal-input-group textarea:focus {
+  box-shadow: 0px 0px 5px 1px hsla(219, 82%, 26%, 0.925);
+}
+
+.modal-wrapper .modal-content .modal-action-group {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-wrapper .modal-content .modal-action-group button {
+  width: 30%;
+  height: 60%;
+  font-size: .9rem;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-wrapper .modal-content .modal-action-group button:hover{
+  opacity: 0.9;
+}
+
+.modal-wrapper .modal-content .modal-action-group .confirm-btn {
+  background-color: hsl(221, 50%, 44%);
+  color: #fff;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.247);
+}
+
+.modal-wrapper .modal-content .modal-action-group .delete-btn {
+  background-color: hsla(0, 100%, 62%, 0.815);
+  color: #fff;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.247);
+}
+
+.modal-wrapper .modal-content .modal-message-group {
+  color: hsla(220, 45%, 8%, 0.979);
+  line-height: 1.7rem;
+  min-width: 100%;
+  min-height: 200px;
+}
+
+.modal-wrapper .modal-content .modal-message-group .modal-message-title {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.modal-wrapper .modal-content .modal-message-group span {
+  font-weight: bold;
+}
