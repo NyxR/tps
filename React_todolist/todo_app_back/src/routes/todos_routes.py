@@ -1,5 +1,6 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from src.database import _db
+from typing import Optional
 from src.utils.schema import TodoList
 from src.utils.todolist.crud import create_todo, update_todo, delete_todo, get_todo, todo_err_msg
 
@@ -9,7 +10,7 @@ router = APIRouter(
 )
 
 @router.get("/")
-async def get_todos(id: int, db=Depends(_db)):
+async def get_todos(id: int = Query(default=None), db=Depends(_db)):
     Todo = get_todo(db, id)
     if Todo:
         return Todo
