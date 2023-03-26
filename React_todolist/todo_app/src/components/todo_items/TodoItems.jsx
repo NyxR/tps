@@ -80,10 +80,10 @@ export default function TodoItems({item}) {
             {/* Update Modal */}
             <Modal header="Update Todo" isOpen={openUpdateModal} onClose={() => setOpenUpdateModal(false)}>
                 <div className="modal-input-group">
-                    <input ref={inputTitleRef} type="text" name='todo-title' defaultValue={title}/>
+                    <input ref={inputTitleRef} type="text" name='todo-title' placeholder="Todo title" defaultValue={title}/>
                 </div>
                 <div className="modal-input-group">
-                    <textarea ref={inputContentRef} name="todo-content" cols="30" rows="10" defaultValue={content}></textarea>
+                    <textarea ref={inputContentRef} name="todo-content" cols="30" rows="10" placeholder="Todo description" defaultValue={content}></textarea>
                 </div>
                 <div className="modal-action-group">
                     <button className="confirm-btn" onClick={handleUpdateTodo}>Update</button>
